@@ -1,7 +1,7 @@
 {
 	"id": "rebind-arrows",
 	"name": "!rebind-arrows",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"minAppVersion": "0.15.0",
 	"description": "Mini-Plugin for remap arrows keys to `Ctrl+J` and `Ctrl+K` for select elements.",
 	"author": "madeliri",
