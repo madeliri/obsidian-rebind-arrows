@@ -20,7 +20,6 @@ function isKeyRelevant(document: Document, event: KeyboardEvent) {
 }
 
 
-
 export default class MyPlugin extends Plugin {
 	settings: MyPluginSettings;
 
@@ -32,14 +31,14 @@ export default class MyPlugin extends Plugin {
 
 		// custom keys to select
 		document.addEventListener('keydown',(e) =>{
-			if (isKeyRelevant(document, e) && e.code == arrowDown_key){
+			if (isKeyRelevant(document, e) && e.code == this.settings.arrowDown){
 				e.preventDefault();
 				document.dispatchEvent(new KeyboardEvent("keydown",{"key":"ArrowDown","code":"ArrowDown"}))
 			}
 		});
 
 		document.addEventListener('keydown',(e) =>{
-			if (isKeyRelevant(document, e) && e.code == arrowUp_key){
+			if (isKeyRelevant(document, e) && e.code == this.settings.arrowUp){
 				e.preventDefault();
 				document.dispatchEvent(new KeyboardEvent("keydown",{"key":"ArrowUp","code":"ArrowUp"}))
 			}

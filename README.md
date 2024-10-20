@@ -1,6 +1,6 @@
 # Obsidian rebind-arrows plugin
 
-Simple plugin for [Obsidian.md](https://obsidian.md/) for remap arrows keys to select elements using `Ctrl+J` and `Ctrl+K` in dropdown popups (like autocomplitions) and prompt-inputs (like Command-Pallete or Quick Switcher)
+Simple plugin for [Obsidian.md](https://obsidian.md/) for remap arrow keys to select elements using `Ctrl+J` and `Ctrl+K` in dropdown popups (like autocomplitions) and prompt-inputs (like Command-Pallete or Quick Switcher)
 
 Writing with no experience in typescript. 
 

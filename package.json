@@ -1,14 +1,14 @@
 {
 	"name": "rebind-arrows",
-	"version": "1.0.5",
-	"description": "Mini-Plugin for remap arrows keys to `Ctrl+J` and `Ctrl+K` for select elements.",
+	"version": "0.0.1",
+	"description": "Mini-Plugin for remap arrow keys to `Ctrl+J` and `Ctrl+K` to select elements.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
-	"keywords": ["key-bindings"],
+	"keywords": ["key-bindings", "obsidian"],
 	"author": "madeliri",
 	"license": "MIT",
 	"devDependencies": {
