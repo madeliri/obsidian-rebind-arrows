@@ -3,9 +3,9 @@
 	"name": "!rebind-arrows",
 	"version": "1.0.4",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
-	"isDesktopOnly": false
+	"description": "Mini-Plugin for remap arrows keys to `Ctrl+J` and `Ctrl+K` for select elements.",
+	"author": "madeliri",
+	"authorUrl": "https://github.com/madeliri",
+	"fundingUrl": "https://github.com/madeliri",
+	"isDesktopOnly": true
 }
