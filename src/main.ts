@@ -32,14 +32,14 @@ export default class MyPlugin extends Plugin {
 
 		// custom keys to select
 		document.addEventListener('keydown',(e) =>{
-			if (isKeyRelevant(document, e) && e.code == "KeyJ"){
+			if (isKeyRelevant(document, e) && e.code == arrowDown_key){
 				e.preventDefault();
 				document.dispatchEvent(new KeyboardEvent("keydown",{"key":"ArrowDown","code":"ArrowDown"}))
 			}
 		});
 
 		document.addEventListener('keydown',(e) =>{
-			if (isKeyRelevant(document, e) && e.code == "KeyK"){
+			if (isKeyRelevant(document, e) && e.code == arrowUp_key){
 				e.preventDefault();
 				document.dispatchEvent(new KeyboardEvent("keydown",{"key":"ArrowUp","code":"ArrowUp"}))
 			}
