@@ -1,6 +1,6 @@
 {
 	"name": "rebind-arrows",
-	"version": "0.0.21",
+	"version": "0.0.22",
 	"description": "Mini-Plugin for remap arrow keys to `Ctrl+J` and `Ctrl+K` to select elements.",
 	"main": "main.js",
 	"scripts": {
