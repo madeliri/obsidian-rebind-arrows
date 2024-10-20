@@ -6,17 +6,32 @@ import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Set
 interface MyPluginSettings {
 	arrowDown: string;
 	arrowUp: string;
+	modKey: string;
 }
 
 const DEFAULT_SETTINGS: MyPluginSettings = {
 	arrowDown: 'KeyJ',
-	arrowUp: 'KeyK'
+	arrowUp: 'KeyK',
+	modKey: 'ctrl'
 }
 
+// checking if pressed needed mod key
+function isSetModKeyPressed(event: KeyboardEvent, set_mod_key: string) {
+	if(set_mod_key == 'ctrl') {
+		return event.ctrlKey
+	} else if (set_mod_key == 'shift') {
+		return event.shiftKey
+	} else if (set_mod_key == 'alt') {
+		return event.altKey
+	} else if (set_mod_key == 'meta') {
+		return event.metaKey
+	}
+}
 
 // return true when pressed any key on select screen (Command Pallete/Quick Switcher) or when popup selecter exists (like [[]])
-function isKeyRelevant(document: Document, event: KeyboardEvent) {
-	return document.activeElement && (document.activeElement.hasClass('prompt-input') || document.querySelector('.suggestion-container')) && event.ctrlKey
+function isKeyRelevant(document: Document, event: KeyboardEvent, modif_key: string) {
+	// return document.activeElement && (document.activeElement.hasClass('prompt-input') || document.querySelector('.suggestion-container')) && event.ctrlKey
+	return document.activeElement && (document.activeElement.hasClass('prompt-input') || document.querySelector('.suggestion-container')) && isSetModKeyPressed(event, modif_key)
 }
 
 
@@ -26,19 +41,20 @@ export default class MyPlugin extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		const arrowDown_key = this.settings.arrowDown
-		const arrowUp_key = this.settings.arrowUp
+		// var modKey = this.settings.modKey
+		// const arrowDown_key = this.settings.arrowDown
+		// const arrowUp_key = this.settings.arrowUp
 
 		// custom keys to select
 		document.addEventListener('keydown',(e) =>{
-			if (isKeyRelevant(document, e) && e.code == this.settings.arrowDown){
+			if (isKeyRelevant(document, e, this.settings.modKey) && e.code == this.settings.arrowDown){
 				e.preventDefault();
 				document.dispatchEvent(new KeyboardEvent("keydown",{"key":"ArrowDown","code":"ArrowDown"}))
 			}
 		});
 
 		document.addEventListener('keydown',(e) =>{
-			if (isKeyRelevant(document, e) && e.code == this.settings.arrowUp){
+			if (isKeyRelevant(document, e, this.settings.modKey) && e.code == this.settings.arrowUp){
 				e.preventDefault();
 				document.dispatchEvent(new KeyboardEvent("keydown",{"key":"ArrowUp","code":"ArrowUp"}))
 			}
@@ -161,6 +177,18 @@ class SampleSettingTab extends PluginSettingTab {
 				.setValue(this.plugin.settings.arrowUp)
 				.onChange(async (value) => {
 					this.plugin.settings.arrowUp = value;
+					await this.plugin.saveSettings();
+				}))
+
+		// mod key
+		new Setting(containerEl)
+			.setName('Which mod key use')
+			.setDesc('ctrl | shift | alt | meta')
+			.addText(text => text
+				.setPlaceholder('Enter your key')
+				.setValue(this.plugin.settings.modKey)
+				.onChange(async (value) => {
+					this.plugin.settings.modKey = value;
 					await this.plugin.saveSettings();
 				}))
 		;
